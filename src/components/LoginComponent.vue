@@ -15,7 +15,7 @@ export default {
   methods: {
     kakaoLogin() {
       window.Kakao.Auth.login({
-        scope: "profile_nickname, account_email, gender",
+        scope: "profile_nickname, account_email, gender, profile_image",
         success: this.getKakaoAccount,
       });
     },
@@ -24,14 +24,22 @@ export default {
       window.Kakao.API.request({
         url: "/v2/user/me",
         success: (res) => {
-          console.log(res);
+          console.log(res.properties.profile_image);
           const acc = res.kakao_account;
           const nickname = acc.profile.nickname;
           const email = acc.email;
+          const thumbnail_image_url = acc.profile.thumbnail_image_url;
+          const profile_image_url = acc.profile.profile_image_url;
+          console.log(acc);
+          console.log(acc.profile);
           console.log(nickname);
           console.log(email);
           VueCookies.set("nickname", nickname);
           VueCookies.set("email", email);
+          VueCookies.set("thumbnail_image_url", thumbnail_image_url);
+          VueCookies.set("profile_image_url", profile_image_url);
+
+          this.$router.push("/home");
         },
         fail: (error) => {
           console.log(error);
@@ -45,6 +53,8 @@ export default {
         console.log("로그아웃");
         VueCookies.remove("nickname");
         VueCookies.remove("email");
+        VueCookies.remove("thumbnail_image_url");
+        VueCookies.remove("profile_image_url");
       });
     },
   },

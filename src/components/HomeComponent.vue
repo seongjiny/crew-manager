@@ -1,62 +1,68 @@
 <template>
-  <v-card class="overflow-hidden">
-    <v-app-bar
-      absolute
-      color="#6A76AB"
-      dark
-      shrink-on-scroll
-      prominent
-      src="https://picsum.photos/1920/1080?random"
-      fade-img-on-scroll
-      scroll-target="#scrolling-techniques-3"
-    >
-      <template v-slot:img="{ props }">
-        <v-img
-          v-bind="props"
-          gradient="to top right, rgba(100,115,201,.7), rgba(25,32,72,.7)"
-        ></v-img>
-      </template>
+  <v-app id="inspire">
+    <v-app-bar app color="white" flat>
+      <v-container class="py-0 fill-height">
+        <v-avatar class="mr-10" color="grey darken-1" size="32">
+          <img :src="profile_image_url" />
+        </v-avatar>
 
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+        <v-btn text> 크루 목록 </v-btn>
+        <v-btn text> 내 프로필 </v-btn>
+        <!-- <v-btn text> 크루 목록 </v-btn> -->
 
-      <v-app-bar-title>Title</v-app-bar-title>
+        <v-spacer></v-spacer>
 
-      <v-spacer></v-spacer>
-
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn>
-
-      <template v-slot:extension>
-        <v-tabs align-with-title>
-          <v-tab>Tab 1</v-tab>
-          <v-tab>Tab 2</v-tab>
-          <v-tab>Tab 3</v-tab>
-        </v-tabs>
-      </template>
+        <v-responsive max-width="260">
+          <v-text-field
+            dense
+            flat
+            hide-details
+            rounded
+            solo-inverted
+          ></v-text-field>
+        </v-responsive>
+      </v-container>
     </v-app-bar>
-    <v-sheet
-      id="scrolling-techniques-3"
-      class="overflow-y-auto"
-      max-height="600"
-    >
-      <v-container style="height: 1000px"></v-container>
-    </v-sheet>
-    <div id="app"></div>
-  </v-card>
+
+    <v-main class="grey lighten-3">
+      <v-container>
+        <v-row>
+          <v-col cols="2">
+            <v-sheet rounded="lg">
+              <v-list color="transparent">
+                <v-list-item v-for="n in 5" :key="n" link>
+                  <v-list-item-content>
+                    <v-list-item-title> List Item {{ n }} </v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+
+                <v-divider class="my-2"></v-divider>
+
+                <v-list-item link color="grey lighten-4">
+                  <v-list-item-content>
+                    <v-list-item-title> Refresh </v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
+            </v-sheet>
+          </v-col>
+
+          <v-col>
+            <v-sheet min-height="70vh" rounded="lg">
+              <!--  -->
+            </v-sheet>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-export default {};
+import VueCookies from "vue-cookies";
+export default {
+  data: () => ({
+    profile_image_url: VueCookies.get("profile_image_url"),
+  }),
+};
 </script>
-
-<style>
-</style>
