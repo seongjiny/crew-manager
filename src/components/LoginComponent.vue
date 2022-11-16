@@ -10,8 +10,14 @@
 
 <script>
 import VueCookies from "vue-cookies";
+import data from "./../assets/data.js";
 export default {
   name: "LoginComponent",
+  data() {
+    return {
+      data: data,
+    };
+  },
   methods: {
     kakaoLogin() {
       window.Kakao.Auth.login({
@@ -39,7 +45,11 @@ export default {
           VueCookies.set("thumbnail_image_url", thumbnail_image_url);
           VueCookies.set("profile_image_url", profile_image_url);
 
-          this.$router.push("/home");
+          if (data.includes(email)) {
+            this.$router.push("/home");
+          } else {
+            this.$router.push("/signup");
+          }
         },
         fail: (error) => {
           console.log(error);

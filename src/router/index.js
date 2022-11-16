@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import LoginComponent from "../components/LoginComponent.vue";
 import HomeComponent from "../components/HomeComponent.vue";
+import SignUpComponent from "../components/SignUpComponent.vue";
 import VueCookies from "vue-cookies";
 
 Vue.use(VueRouter);
@@ -18,6 +19,10 @@ export default new VueRouter({
     {
       path: "/login",
       component: LoginComponent,
+    },
+    {
+      path: "/signup",
+      component: SignUpComponent,
     },
     {
       path: "/home",

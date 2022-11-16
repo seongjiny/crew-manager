@@ -40,7 +40,9 @@
 
                 <v-list-item link color="grey lighten-4">
                   <v-list-item-content>
-                    <v-list-item-title> Refresh </v-list-item-title>
+                    <v-list-item-title @click="logout">
+                      로그아웃
+                    </v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
               </v-list>
@@ -64,5 +66,20 @@ export default {
   data: () => ({
     profile_image_url: VueCookies.get("profile_image_url"),
   }),
+  methods: {
+    logout() {
+      window.Kakao.isInitialized();
+
+      window.Kakao.Auth.logout(function () {
+        console.log("로그아웃");
+        VueCookies.remove("nickname");
+        VueCookies.remove("email");
+        VueCookies.remove("thumbnail_image_url");
+        VueCookies.remove("profile_image_url");
+      });
+
+      this.$router.push("/login");
+    },
+  },
 };
 </script>
