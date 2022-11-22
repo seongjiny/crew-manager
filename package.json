@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "firebase": "^9.14.0",
+    "firebase-tools": "^11.16.1",
     "vue": "^2.6.14",
     "vue-cookies": "^1.8.2",
     "vue-router": "^3.5.3",
@@ -44,5 +46,18 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "description": "## Project setup ``` yarn install ```",
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seongjiny/crew-manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seongjiny/crew-manager/issues"
+  },
+  "homepage": "https://github.com/seongjiny/crew-manager#readme"
 }

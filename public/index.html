@@ -15,6 +15,27 @@
     />
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyBlgamCb65mTDLa7Z53m33cSiu9lpSrubo",
+        authDomain: "crew-manager-e370a.firebaseapp.com",
+        databaseURL:
+          "https://crew-manager-e370a-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "crew-manager-e370a",
+        storageBucket: "crew-manager-e370a.appspot.com",
+        messagingSenderId: "121632428862",
+        appId: "1:121632428862:web:14fd3e791be23d12a1526f",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+    </script>
   </head>
   <body>
     <noscript>

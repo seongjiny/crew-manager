@@ -9,7 +9,7 @@
         <v-btn text> 크루 목록 </v-btn>
         <v-btn text> 내 프로필 </v-btn>
         <!-- <v-btn text> 크루 목록 </v-btn> -->
-
+        <v-btn @click="read()" text>테스트</v-btn>
         <v-spacer></v-spacer>
 
         <v-responsive max-width="260">
@@ -62,6 +62,8 @@
 
 <script>
 import VueCookies from "vue-cookies";
+import firebase from "firebase/compat/app";
+
 export default {
   data: () => ({
     profile_image_url: VueCookies.get("profile_image_url"),
@@ -79,6 +81,18 @@ export default {
       });
 
       this.$router.push("/login");
+    },
+    read() {
+      console.log("trying firebase");
+      console.log(firebase);
+      firebase
+        .database()
+        .ref("data/")
+        .child("test")
+        .on("value", (sn) => {
+          console.log(sn);
+          console.log(sn.val());
+        });
     },
   },
 };
